@@ -1,0 +1,142 @@
+* {
+  scroll-behavior: smooth;
+}
+/* background */
+
+.bg-pesawat {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(94, 174, 243, 0.6468) 0%,
+      rgba(105, 161, 249, 0.6468) 50.33%,
+      rgba(18, 89, 248, 0.6048) 95.75%
+    ),
+    url("../assets/airplane-hero-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.paperAirplaneRed {
+  background-image: url("../assets/paperplane-red.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.blue-green {
+  background: linear-gradient(356.42deg, #007c96 3.2%, #0099b8 97.33%);
+}
+
+.bg-biru {
+  background: linear-gradient(224.74deg, #30b6be 0.95%, #3ea5d0 91.88%);
+}
+
+.bg-blue-icon {
+  background: #5eaef3;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* text */
+.text-blue-green {
+  color: #008fac;
+}
+.text-blue-icon {
+  color: #5eaef3;
+}
+
+/* border */
+.border-blue-icon {
+  border-color: #6db4f1fb;
+}
+
+/* button */
+.biru-button {
+  background: #1259f8;
+}
+
+/* other */
+.unactive {
+  color: #b1b1b1;
+}
+.w-11persen {
+  width: 11%;
+}
+.w-150 {
+  width: 105%;
+}
+.wf-35 {
+  width: 36px;
+}
+.mr-kick {
+  margin-right: 32rem;
+}
+
+/* yang pas di klik belakangnya item */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 12em;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* carousel */
+
+.one-time {
+  margin-bottom: 3em;
+}
+
+.one-time div {
+  width: 60em;
+  max-height: 25em;
+}
+
+.one-time div img {
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.slick-dots li button:before {
+  transition: 0.2s;
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  transition: 0.2s;
+  color: white !important;
+}
+.alert {
+  margin-top: 1rem;
+  display: inline-block;
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.alert-success {
+  color: #1d643b;
+  background-color: #d7f3e3;
+  border-color: #c7eed8;
+}
+.custom{
+  width:70px;
+  height: 70px;
+  clip-path: circle();
+}
