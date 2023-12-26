@@ -1,15 +1,14 @@
 * {
   scroll-behavior: smooth;
 }
+
 /* background */
 
 .bg-pesawat {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(94, 174, 243, 0.6468) 0%,
       rgba(105, 161, 249, 0.6468) 50.33%,
-      rgba(18, 89, 248, 0.6048) 95.75%
-    ),
+      rgba(18, 89, 248, 0.6048) 95.75%),
     url("../assets/airplane-hero-background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -50,6 +49,7 @@
 .text-blue-green {
   color: #008fac;
 }
+
 .text-blue-icon {
   color: #5eaef3;
 }
@@ -68,15 +68,20 @@
 .unactive {
   color: #b1b1b1;
 }
+
 .w-11persen {
-  width: 11%;
+  width: 110px
 }
+
 .w-150 {
-  width: 105%;
+  width: 100%;
 }
+
+
 .wf-35 {
   width: 36px;
 }
+
 .mr-kick {
   margin-right: 32rem;
 }
@@ -122,6 +127,7 @@
   transition: 0.2s;
   color: white !important;
 }
+
 .alert {
   margin-top: 1rem;
   display: inline-block;
@@ -130,13 +136,21 @@
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
+
 .alert-success {
   color: #1d643b;
   background-color: #d7f3e3;
   border-color: #c7eed8;
 }
-.custom{
-  width:70px;
-  height: 70px;
+
+.custom {
+  width: 50px;
+  height: 50px;
+  clip-path: circle();
+}
+
+.custom-profile {
+  width: 100px;
+  height: 100px;
   clip-path: circle();
 }

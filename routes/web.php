@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/user/checkorder', 'OrderController@index')->name('order');
-Route::post('/order/store', 'OrderController@store')->name('store');
+
+Route::get('/user/checkorder', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
+Route::post('/order/store', [App\Http\Controllers\OrderController::class, 'store'])->name('store');
 
 Route::get('/profile', function() {
     return view('profile');
@@ -32,10 +33,11 @@ Route::get('/resetpass', function () {
     return view('auth.passwords.reset');
 })->name('resetPass');
 
-Route::delete('/order/delete/{id}','OrderController@destroy')->name('delete');
-Route::patch('/order/update/{id}','OrderController@upd')->name('update');
+Route::delete('/order/delete/{id}',[App\Http\Controllers\OrderController::class, 'destroy'])->name('delete');
+Route::patch('/order/update/{id}',[App\Http\Controllers\OrderController::class, 'upd'])->name('update');
 
-Route::patch('/user/profile/{id}', 'UserController@update')->name('profileUpdate');
+Route::patch('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('profileUpdate');
+Route::post('/user/profile/image/{id}',[App\Http\Controllers\UserController::class, 'imageUpdate'])->name('imageUpdate');
 
 Auth::routes();
 

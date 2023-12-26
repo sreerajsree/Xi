@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -25,5 +26,24 @@ class UserController extends Controller
             'address' =>$request->address,
         ]);
         return back();
+    }
+
+    public function imageUpdate(Request $request, $id)
+    {
+        $data = User::find($id);
+        if ($request->file('image')) {
+            $imagePath = Storage::delete('public/pp/'.$data->image);
+            if (is_file($imagePath)) {
+                unlink($imagePath);
+            }
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->storeAs("public/pp/", $filename);
+            $data['image'] = $filename;
+        }
+        $data->save();
+        return redirect()
+            ->back()
+            ->withSuccessMessage('Image Updated Successfully!');
     }
 }

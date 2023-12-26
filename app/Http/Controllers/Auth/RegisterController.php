@@ -56,18 +56,18 @@ class RegisterController extends Controller
             'dob' => ['required'],
             'address' => ['required', 'string'],
             'id_card' => ['required', 'mimes:jpg,pdf,png,jpeg'],
-            'profile_picture' => ['required', 'mimes:jpg,pdf,png,jpeg'],
+            'image' => ['required', 'mimes:jpg,pdf,png,jpeg'],
         ]);
     }
 
     protected function create(array $data) {
         $request = request();
-        if($request->hasFile('profile_picture')){
-            $fileNameWithExt = $request->file('profile_picture')->getClientOriginalName();
+        if($request->hasFile('image')){
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('profile_picture')->getClientOriginalExtension();
+            $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $fileName.'_'.time().'_'.'.'.$extension;
-            $path = $request->file('profile_picture')->storeAs('public/pp', $fileNameToStore);
+            $path = $request->file('image')->storeAs('public/pp', $fileNameToStore);
         }else{
             $fileNameToStore = 'no-image.jpg';
         }
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'address' => $data['address'],
             'id_card' => $fileNameToStoreid,
-            'profile_picture' => $fileNameToStore,
+            'image' => $fileNameToStore,
         ]);
     }
     

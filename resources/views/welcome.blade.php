@@ -17,9 +17,7 @@
 
 <body class="bg-white flex flex-col">
     <div class="header bg-pesawat text-white">
-        <!-- start nav -->
-        <!-- nav blue NOT registered -->
-        <nav id="noRegisBlue" class="flex py-8 px-24 justify-between sticky top-0">
+        <nav id="noRegisBlue" class="flex py-8 px-4 md:px-24 justify-between sticky top-0">
             <img class="w-11persen" src="../assets/logo.png" alt="" />
             <div class="flex space-x-6">
                 <button class="w-36 border-r-2 pr-8" type="button">
@@ -28,7 +26,7 @@
                 <button class="w-20" type="button">
                     <a href="{{ route('login') }}">Log in</a>
                 </button>
-                <button class="w-32 border-2 rounded-full" type="button">
+                <button class="w-32 border-2 rounded-full hidden md:block" type="button">
                     <a href="{{ route('register') }}">Register</a>
                 </button>
             </div>
@@ -54,29 +52,29 @@
         </div>
     </div>
     <!-- nav white NOT registerd -->
-    <nav id="noregisWhite" class="flex py-8 px-24 justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="noregisWhite" class="flex py-8 px-4 md:px-24 justify-between sticky top-0 text-gray-700 bg-white">
         <img class="w-11persen" src="../assets/logo-black.png" alt="" />
         <div class="flex space-x-6">
             <button class="w-36 border-r-2 border-gray-700 pr-8" type="button">
                 <a href="{{ route('login') }}">Check Order</a>
             </button>
             <button class="w-20" type="button"><a href="{{ route('login') }}">Log in</a></button>
-            <button class="w-32 border-2 border-gray-700 rounded-full" type="button">
+            <button class="w-32 border-2 border-gray-700 rounded-full hidden md:block" type="button">
                 <a href="{{ route('register') }}">Register</a>
             </button>
         </div>
     </nav>
     <!-- ini yang ituannya tiket.com -->
-    <form action="{{ route('order') }}">
+    <form action="">
         <div id="btnModal"
-            class="border-2 shadow-lg bg-white mx-2 md:mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
+            class="border-2 shadow-lg bg-white container text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
             <h1 class="text-black text-3xl font-semibold">
                 Where would you like to go?
             </h1>
             <!-- menu milih mesen -->
             <div class="flex flex-col my-4">
                 <!-- atas -->
-                <div class="flex flex-row">
+                <div class="flex flex-col md:flex-row">
                     <!-- from -->
                     <div class="flex flex-col">
                         <p>From</p>
@@ -119,19 +117,20 @@
                         </div>
                     </div>
                     <!-- passenger -->
-                    <div class="flex flex-col ml-10 w-1/2">
+                    <div class="flex flex-col ml-0 md:ml-10 w-100 md:w-1/2">
                         <p>Passengers</p>
                         <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                             <img src="../assets/icon/passenger.svg" alt="" />
                             <input class="pl-2 w-1/2" type="number" name="adults" id=""
                                 placeholder="Adult" />
+                                <img src="../assets/icon/pets.svg" alt="" />
                             <input class="pl-2 w-1/2" type="number" name="children" id=""
-                                placeholder="Child" />
+                                placeholder="Pets" />
                         </div>
                     </div>
                 </div>
                 <!-- bawah -->
-                <div class="flex flex-row my-4">
+                <div class="flex flex-col md:flex-row my-4">
                     <!-- departure date-->
                     <div class="flex flex-col">
                         <p>Departure Date</p>
@@ -142,11 +141,11 @@
                         </div>
                     </div>
                     <!-- seat class -->
-                    <div class="flex flex-col mx-40">
+                    <div class="flex flex-col mt-5 md:mt-0">
                         <p>Seat Class</p>
                         <!-- cari cara dropdown semua bandaranya -->
-                        <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                            <img src="../assets/icon/seat.svg" class="w-11persen" alt="" />
+                        <div class="flex flex-row border-b-2 border-gray-100 mt-2 w-full ml-0 md:ml-5">
+                            <img src="../assets/icon/seat.svg" alt="" />
                             <!-- dari sini -->
                             <div id="seatWhite" class="mx-4">
                                 <!-- ini yg munculin valuenya -->
@@ -167,7 +166,7 @@
             <!-- button -->
             <div class="flex flex-row-reverse">
                 <button type="submit"
-                    class="biru-button text-white p-3 rounded-md font-semibold w-1/6 hover:bg-blue-700 hover:shadow-lg">
+                    class="biru-button text-white p-3 rounded-md font-semibold  hover:bg-blue-700 hover:shadow-lg">
                     Book Now
                 </button>
             </div>
@@ -176,14 +175,15 @@
     <!-- modalnya -->
     <form action="{{ route('order') }}">
         <div id="modalnya" class="modal">
-            <div class="border-2 shadow-lg bg-white mx-2 md:mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
+            <div
+                class="border-2 shadow-lg bg-white mx-2 md:mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
                 <h1 class="text-black text-3xl font-semibold">
                     Where would you like to go?
                 </h1>
                 <!-- menu milih mesen -->
                 <div class="flex flex-col my-4">
                     <!-- atas -->
-                    <div class="flex flex-row">
+                    <div class="flex flex-col md:flex-row">
                         <!-- from -->
                         <div class="flex flex-col">
                             <p>From</p>
@@ -226,19 +226,20 @@
                             </div>
                         </div>
                         <!-- passenger -->
-                        <div class="flex flex-col ml-10 w-1/2">
+                        <div class="flex flex-col ml-0 md:ml-10 w-100 md:w-1/2">
                             <p>Passengers</p>
                             <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                                 <img src="../assets/icon/passenger.svg" alt="" />
                                 <input class="pl-2 w-1/2" type="number" name="adults" id=""
                                     placeholder="Adult" />
+                                    <img src="../assets/icon/pets.svg" alt="" />
                                 <input class="pl-2 w-1/2" type="number" name="children" id=""
-                                    placeholder="Child" />
+                                    placeholder="Pets" />
                             </div>
                         </div>
                     </div>
                     <!-- bawah -->
-                    <div class="flex flex-row my-4">
+                    <div class="flex flex-col md:flex-row my-4">
                         <!-- departure date-->
                         <div class="flex flex-col">
                             <p>Departure Date</p>
@@ -249,11 +250,11 @@
                             </div>
                         </div>
                         <!-- seat class -->
-                        <div class="flex flex-col mx-40">
+                        <div class="flex flex-col mt-5 md:mt-0">
                             <p>Seat Class</p>
                             <!-- cari cara dropdown semua bandaranya -->
-                            <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                                <img src="../assets/icon/seat.svg" class="w-11persen" alt="" />
+                            <div class="flex flex-row border-b-2 border-gray-100 mt-2 w-full ml-0 md:ml-5">
+                                <img src="../assets/icon/seat.svg" alt="" />
                                 <!-- dari sini -->
                                 <div id="seatModal" class="mx-4">
                                     <!-- ini yg munculin valuenya -->
@@ -274,7 +275,7 @@
                 <!-- button -->
                 <div class="flex flex-row-reverse">
                     <button id="bookNow" type="submit"
-                        class="biru-button text-white p-3 rounded-md font-semibold w-1/6 hover:bg-blue-700 hover:shadow-lg">
+                        class="biru-button text-white p-3 rounded-md font-semibold  hover:bg-blue-700 hover:shadow-lg">
                         Book Now
                     </button>
                 </div>
@@ -296,15 +297,15 @@
     </div>
     <div id="container" class="container">
         <!-- yang going anywhere -->
-        <div class="flex flex-col md:flex-row mt-20">
+        <div class="flex flex-col md:flex-row items-center mt-20">
             <img class="w-56 mx-auto md:w-auto" src="../assets/airplane-about.png" alt="" />
-            <div class="ml-0 md:ml-20 mt-8">
-                <div class="text-gray-800 font-semibold tracking-wider">
+            <div class="ml-0 md:ml-20 mt-5 md:mt-0">
+                <div class="text-gray-800 font-semibold tracking-wider text-center md:text-left">
                     <h2 class="text-2xl">Going anywhere?</h2>
-                    <h1 class="text-3xl">JoFlights is the answer!</h1>
+                    <h1 class="text-3xl">Xi Aviation is the answer!</h1>
                 </div>
-                <p class="mt-4 text-gray-500 text-lg">
-                    JoFlights provides an enjoyable experience of booking flights. With
+                <p class="mt-4 text-gray-500 text-lg text-center md:text-left">
+                    Xi Aviation provides an enjoyable experience of booking flights. With
                     a single-click from your couch, you are ready to fly to your
                     destination! We provide various flights from various trusted flights
                     companies to provide you a safe and enjoyable flights.
@@ -314,10 +315,10 @@
         <!-- yang ada 3 itu -->
         <div class="flex flex-col text-center font-semibold text-gray-800 mt-40">
             <h1 class="text-3xl tracking-wider mb-16">
-                Why Booking Flights at JoFlights?
+                Why Booking Flights at Xi Aviation?
             </h1>
             <!-- 3 iconnya -->
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <!-- hp -->
                 <div>
                     <img class="mx-auto" src="../assets/icon/book-flights.svg" alt="" />
@@ -369,45 +370,29 @@
             </div>
         </div>
     </div>
-    <footer class="flex border-t-2 mx-24 py-8">
+    <footer class="grid grid-cols-1 md:grid-cols-4 gap-4 border-t-2 container py-8">
         <!-- satu -->
-        <div class="w-1/3">
-            <img class="w-1/4" src="../assets/logo-black.png" alt="" />
-            <h1 class="font-semibold py-4 text-gray-800">Download JoFlights App</h1>
-            <div class="flex">
-                <a href="https://play.google.com/store"><img src="../assets/googlePlay.svg" alt="" /></a>
-                <a href="https://www.apple.com/app-store/"><img class="pl-2" src="../assets/appstore.svg"
-                        alt="" /></a>
-            </div>
+        <div>
+            <img style="width: 150px" src="../assets/logo-black.png" alt="" />
         </div>
         <!-- dua -->
-        <div class="px-2">
-            <h1 class="text-gray-800 font-semibold text-lg">JoFlights</h1>
-            <p class="py-2 text-sm text-gray-500">About JoFlights</p>
-            <p class="py-2 text-sm text-gray-500">Blogs</p>
-            <p class="py-2 text-sm text-gray-500">Careers</p>
-            <p class="py-2 text-sm text-gray-500">Partners</p>
-            <p class="py-2 text-sm text-gray-500">Contact Us</p>
-            <p class="py-2 text-sm text-gray-500">Help Center</p>
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
         </div>
         <!-- tiga -->
-        <div class="px-12">
-            <h1 class="text-gray-800 font-semibold text-lg">Products</h1>
-            <p class="py-2 text-sm text-gray-500">One Way Flights</p>
-            <p class="py-2 text-sm text-gray-500">Round trip Flights</p>
-            <p class="py-2 text-sm text-gray-500">Domestic Flights</p>
-            <p class="py-2 text-sm text-gray-500">International Flights</p>
-        </div>
         <!-- empat -->
-        <div class="px-2">
-            <h1 class="text-gray-800 font-semibold text-lg">Customer Care</h1>
-            <p class="py-2 text-sm text-gray-500">Help Center</p>
-            <p class="py-2 text-sm text-gray-500">FAQ</p>
-            <p class="py-2 text-sm text-gray-500">Terms and Condition</p>
-            <p class="py-2 text-sm text-gray-500">Privacy</p>
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Participant Agreement</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Cookie Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Terms and Condition</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Privacy Policy</a></p>
         </div>
         <!-- lima -->
-        <div class="pl-12">
+        <div>
             <h1 class="text-gray-800 font-semibold text-lg">Follow Us</h1>
             <div class="flex py-2">
                 <a href="https://www.facebook.com/"><img class="pr-2" src="../assets/facebook.svg"
@@ -421,9 +406,9 @@
         </div>
     </footer>
     <!-- copyrgith -->
-    <div class="border-t-2 mx-24 py-8">
+    <div class="border-t-2 container py-8">
         <h1 class="text-center text-gray-500">
-            ©2021 JoFlights, Inc. All Rights Reserved.
+            ©{{ date('Y') }} Xi Aviation, Inc. All Rights Reserved.
         </h1>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -473,7 +458,7 @@
                 modal3.style.display = "none";
             }
         };
-        // modal3 close
+        // deleteBtn close
         function closeDelete() {
             modal3.style.display = "none";
         }

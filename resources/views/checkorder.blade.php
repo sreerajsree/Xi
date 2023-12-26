@@ -22,13 +22,14 @@
                 <button class="w-36 pr-8" type="button">
                     <a href="{{ route('order') }}">Check Order</a>
                 </button>
-                <img class="cursor-pointer custom" src="{{ asset('storage/pp/' . Auth::user()->profile_picture) }}"
+                <img class="cursor-pointer custom object-cover" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
                     alt="" onclick="popUpWhite()" />
             </div>
             <div id="profilePopUpWhite" class="bg-white text-gray-700 rounded-lg px-4 py-6 w-9/12 mt-3 ml-4"
                 style="display: none">
                 <div class="flex border-b-2 border-gray-100 mb-5 pb-5">
-                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->profile_picture) }}" alt="" />
+                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
+                        alt="" />
                     <h1 class="text-2xl w-1/2 text-center pl-2">{{ Auth::user()->fullname }}</h1>
                 </div>
                 <div class="flex flex-col space-y-5">
@@ -57,9 +58,9 @@
             </div>
         </div>
     </nav>
-    <div id="container" class="mx-24 my-8">
+    <div id="container" class="container my-8">
         <h1 class="text-4xl font-semibold text-gray-700 py-4">My Order</h1>
-        <div class="py-10 px-8 flex">
+        <div class="py-10 flex">
             <div id="tabelnya">
                 <div class="table w-full text-center text-gray-800 font-semibold">
                     <div class="table-header-group">
@@ -78,7 +79,7 @@
                             <div class="table-cell px-6 border-b-2 border-t-2">
                                 Passengers
                             </div>
-                            <div class="table-cell border-b-2 border-t-2">Total Order</div>
+                            {{-- <div class="table-cell border-b-2 border-t-2">Total Order</div> --}}
                             <div class="table-cell border-b-2 border-t-2"></div>
                             <div class="table-cell border-b-2 border-t-2"></div>
                         </div>
@@ -102,12 +103,12 @@
                                 <div class="table-cell inline-block align-middle border-b-2">
                                     <div>
                                         <p>{{ $order->adult }} Adult</p>
-                                        <p>{{ $order->child }} Child</p>
+                                        <p>{{ $order->child }} Pets</p>
                                     </div>
                                 </div>
-                                <div class="table-cell inline-block align-middle border-b-2">
-                                    IDR1.000.000
-                                </div>
+                                {{-- <div class="table-cell inline-block align-middle border-b-2">
+                                    USD.000.000
+                                </div> --}}
                                 <div class="table-cell px-6 py-6 border-b-2 cursor-pointer" onclick="editBtn()">
                                     <img class="hover:shadow-lg" src="../assets/icon/ant-design_edit-filled.svg"
                                         alt="" />
@@ -180,8 +181,9 @@
                                                                 <input class="pl-2 w-1/2" type="number"
                                                                     name="adult" id="" placeholder="Adult"
                                                                     value="{{ $order->adult }}" />
+                                                                <img src="../assets/icon/pets.svg" alt="" />
                                                                 <input class="pl-2 w-1/2" type="number"
-                                                                    name="child" id="" placeholder="Child"
+                                                                    name="child" id="" placeholder="Pets"
                                                                     value="{{ $order->child }}" />
                                                             </div>
                                                         </div>
@@ -204,7 +206,7 @@
                                                             <p>Seat Class</p>
                                                             <!-- cari cara dropdown semua bandaranya -->
                                                             <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                                                                <img src="../assets/icon/seat.svg" class="w-11persen"
+                                                                <img src="../assets/icon/seat.svg"
                                                                     alt="" />
                                                                 <!-- dari sini -->
                                                                 <div id="seatModal" class="mx-4">
@@ -275,35 +277,29 @@
             </div>
         </div>
     </div>
-    <footer class="flex border-t-2 mx-24 py-8">
-
-        <div class="px-2">
-            <h1 class="text-gray-800 font-semibold text-lg">JoFlights</h1>
-            <p class="py-2 text-sm text-gray-500">About JoFlights</p>
-            <p class="py-2 text-sm text-gray-500">Blogs</p>
-            <p class="py-2 text-sm text-gray-500">Careers</p>
-            <p class="py-2 text-sm text-gray-500">Partners</p>
-            <p class="py-2 text-sm text-gray-500">Contact Us</p>
-            <p class="py-2 text-sm text-gray-500">Help Center</p>
+    <footer class="grid grid-cols-1 md:grid-cols-4 gap-4 border-t-2 container py-8">
+        <!-- satu -->
+        <div>
+            <img style="width: 150px" src="../assets/logo-black.png" alt="" />
+        </div>
+        <!-- dua -->
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
         </div>
         <!-- tiga -->
-        <div class="px-12">
-            <h1 class="text-gray-800 font-semibold text-lg">Products</h1>
-            <p class="py-2 text-sm text-gray-500">One Way Flights</p>
-            <p class="py-2 text-sm text-gray-500">Round trip Flights</p>
-            <p class="py-2 text-sm text-gray-500">Domestic Flights</p>
-            <p class="py-2 text-sm text-gray-500">International Flights</p>
-        </div>
         <!-- empat -->
-        <div class="px-2">
-            <h1 class="text-gray-800 font-semibold text-lg">Customer Care</h1>
-            <p class="py-2 text-sm text-gray-500">Help Center</p>
-            <p class="py-2 text-sm text-gray-500">FAQ</p>
-            <p class="py-2 text-sm text-gray-500">Terms and Condition</p>
-            <p class="py-2 text-sm text-gray-500">Privacy</p>
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Participant Agreement</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Cookie Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Terms and Condition</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Privacy Policy</a></p>
         </div>
         <!-- lima -->
-        <div class="pl-12">
+        <div>
             <h1 class="text-gray-800 font-semibold text-lg">Follow Us</h1>
             <div class="flex py-2">
                 <a href="https://www.facebook.com/"><img class="pr-2" src="../assets/facebook.svg"
@@ -317,9 +313,9 @@
         </div>
     </footer>
     <!-- copyrgith -->
-    <div class="border-t-2 mx-24 py-8">
+    <div class="border-t-2 container py-8">
         <h1 class="text-center text-gray-500">
-            {{ date('Y') }} Xi Aviation, Inc. All Rights Reserved.
+            ©{{ date('Y') }} Xi Aviation, Inc. All Rights Reserved.
         </h1>
     </div>
     <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
