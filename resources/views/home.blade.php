@@ -28,14 +28,13 @@
                     <button class="w-36 pr-8" type="button">
                         <a href="{{ route('order') }}">Check Order</a>
                     </button>
-                    <img class="cursor-pointer custom object-cover" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
-                        alt="" onclick="popUpBlue()" />
+                    <img class="cursor-pointer custom object-cover"
+                        src="{{ asset('storage/pp/' . Auth::user()->image) }}" alt="" onclick="popUpBlue()" />
                 </div>
                 <div id="profilePopUpBlue" class="bg-white text-gray-700 rounded-lg px-4 py-6 w-9/12 mt-3 ml-4"
                     style="display: none">
                     <div class="flex border-b-2 border-gray-100 mb-5 pb-5">
-                        <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
-                            alt="" />
+                        <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}" alt="" />
                         <h1 class="text-2xl w-1/2 text-center pl-2">{{ Auth::user()->fullname }}</h1>
                     </div>
                     <div class="flex flex-col space-y-5">
@@ -98,8 +97,7 @@
             <div id="profilePopUpWhite" class="bg-white text-gray-700 rounded-lg px-4 py-6 w-9/12 mt-3 ml-4"
                 style="display: none">
                 <div class="flex border-b-2 border-gray-100 mb-5 pb-5">
-                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
-                        alt="" />
+                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}" alt="" />
                     <h1 class="text-2xl w-1/2 text-center pl-2">{{ Auth::user()->fullname }}</h1>
                 </div>
                 <div class="flex flex-col space-y-5">
@@ -130,6 +128,7 @@
     </nav>
     <!-- ini yang ituannya tiket.com -->
     <form action="">
+
         <div id="btnModal"
             class="border-2 shadow-lg bg-white container text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
             <h1 class="text-black text-3xl font-semibold">
@@ -209,7 +208,7 @@
                         <p>Seat Class</p>
                         <!-- cari cara dropdown semua bandaranya -->
                         <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                            <img src="../assets/icon/seat.svg"  alt="" />
+                            <img src="../assets/icon/seat.svg" alt="" />
                             <!-- dari sini -->
                             <div id="seatWhite" class="mx-4">
                                 <!-- ini yg munculin valuenya -->

@@ -377,8 +377,8 @@
         </div>
         <!-- dua -->
         <div>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('about') }}">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('howitworks') }}">How it Works</a></p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
