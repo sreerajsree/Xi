@@ -33,12 +33,6 @@ Route::get('/resetpass', function () {
     return view('auth.passwords.reset');
 })->name('resetPass');
 
-Route::delete('/order/delete/{id}',[App\Http\Controllers\OrderController::class, 'destroy'])->name('delete');
-Route::patch('/order/update/{id}',[App\Http\Controllers\OrderController::class, 'upd'])->name('update');
-
-Route::patch('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('profileUpdate');
-Route::post('/user/profile/image/{id}',[App\Http\Controllers\UserController::class, 'imageUpdate'])->name('imageUpdate');
-
 Route::view('/about',[App\Http\Controllers\PageController::class, 'about'])->name('about');
 Route::view('/how-it-works',[App\Http\Controllers\PageController::class, 'howitworks'])->name('howitworks');
 Route::view('/aircraft',[App\Http\Controllers\PageController::class, 'aircraft'])->name('aircraft');
@@ -47,6 +41,16 @@ Route::view('/agreement',[App\Http\Controllers\PageController::class, 'agreement
 Route::view('/privacy',[App\Http\Controllers\PageController::class, 'privacy'])->name('privacy');
 Route::view('/terms',[App\Http\Controllers\PageController::class, 'terms'])->name('terms');
 Route::view('/cookie-policy',[App\Http\Controllers\PageController::class, 'cookie'])->name('cookie-policy');
+Route::get('/where-we-fly',[App\Http\Controllers\PageController::class, 'wtf'])->name('wtf');
+
+Route::delete('/order/delete/{id}',[App\Http\Controllers\OrderController::class, 'destroy'])->name('delete');
+Route::patch('/order/update/{id}',[App\Http\Controllers\OrderController::class, 'upd'])->name('update');
+
+Route::patch('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('profileUpdate');
+Route::post('/user/profile/image/{id}',[App\Http\Controllers\UserController::class, 'imageUpdate'])->name('imageUpdate');
+Route::get('/add-passengers/{id}',[App\Http\Controllers\PageController::class, 'addPassenger'])->name('addPassenger');
+Route::post('/add-passengers/save',[App\Http\Controllers\PageController::class, 'addpassengers'])->name('add.passengers');
+
 
 Auth::routes();
 

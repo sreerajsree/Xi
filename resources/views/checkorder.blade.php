@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Check Order</title>
 </head>
 
 <body class="bg-white flex flex-col">
     <!-- nav white signed in -->
-    <nav id="regisWhite" class="flex py-8 px-24 justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="regisWhite" class="flex py-8 container justify-between sticky top-0 text-gray-700 bg-white">
         <a href="{{ route('home') }}">
             <img class="w-30 h-10" src="../assets/logo-black.png" alt="" />
         </a>
@@ -28,8 +28,7 @@
             <div id="profilePopUpWhite" class="bg-white text-gray-700 rounded-lg px-4 py-6 w-9/12 mt-3 ml-4"
                 style="display: none">
                 <div class="flex border-b-2 border-gray-100 mb-5 pb-5">
-                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
-                        alt="" />
+                    <img class="custom" src="{{ asset('storage/pp/' . Auth::user()->image) }}" alt="" />
                     <h1 class="text-2xl w-1/2 text-center pl-2">{{ Auth::user()->fullname }}</h1>
                 </div>
                 <div class="flex flex-col space-y-5">
@@ -60,21 +59,18 @@
     </nav>
     <div id="container" class="container my-8">
         <h1 class="text-4xl font-semibold text-gray-700 py-4">My Order</h1>
-        <div class="py-10 flex">
+        <div class="py-10">
             <div id="tabelnya">
                 <div class="table w-full text-center text-gray-800 font-semibold">
                     <div class="table-header-group">
                         <div class="table-row">
-                            <div class="table-cell w-32 border-b-2 border-t-2">
+                            <div class="table-cell border-b-2 border-t-2">
                                 Order ID
                             </div>
-                            <div class="table-cell w-24 border-b-2 border-t-2">From</div>
-                            <div class="table-cell w-24 border-b-2 border-t-2">To</div>
-                            <div class="table-cell w-36 border-b-2 border-t-2">
+                            <div class="table-cell border-b-2 border-t-2">From</div>
+                            <div class="table-cell border-b-2 border-t-2">To</div>
+                            <div class="table-cell border-b-2 border-t-2">
                                 Departure Date
-                            </div>
-                            <div class="table-cell w-28 border-b-2 border-t-2">
-                                Seat Class
                             </div>
                             <div class="table-cell px-6 border-b-2 border-t-2">
                                 Passengers
@@ -98,9 +94,6 @@
                                     {{ $order->departure }}
                                 </div>
                                 <div class="table-cell inline-block align-middle border-b-2">
-                                    {{ $order->seatclass }}
-                                </div>
-                                <div class="table-cell inline-block align-middle border-b-2">
                                     <div>
                                         <p>{{ $order->adult }} Adult</p>
                                         <p>{{ $order->child }} Pets</p>
@@ -110,20 +103,25 @@
                                     USD.000.000
                                 </div> --}}
                                 <div class="table-cell px-6 py-6 border-b-2 cursor-pointer" onclick="editBtn()">
-                                    <img class="hover:shadow-lg" src="../assets/icon/ant-design_edit-filled.svg"
+                                    <div class="hidden md:block">
+                                        <img class="hover:shadow-lg" src="../assets/icon/ant-design_edit-filled.svg"
                                         alt="" />
+                                    </div>
+                                    <div class="block md:hidden">
+                                        <div class="bg-blue-600 text-white px-4 py-2">Edit</div>
+                                    </div>
                                     <!-- editModal -->
                                     <form action="{{ route('update', $order->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <div id="editModal" class="modal">
                                             <div
-                                                class="border-2 shadow-lg bg-white mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
+                                                class="border-2 shadow-lg bg-white mx-4 md:mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
                                                 <h1 class="text-black text-3xl font-semibold">Your Ticket</h1>
                                                 <!-- menu milih mesen -->
                                                 <div class="flex flex-col my-4">
                                                     <!-- atas -->
-                                                    <div class="flex flex-row">
+                                                    <div class="block md:flex flex-row">
                                                         <!-- from -->
                                                         <div class="flex flex-col">
                                                             <p>From</p>
@@ -137,7 +135,8 @@
                                                                     </p>
                                                                     <!-- dropdownnya -->
                                                                     <select name="from" v-model="selected"
-                                                                        class="w-150" value="@{{ option.value }}">
+                                                                        class="w-150" value="@{{ option.value }}"
+                                                                        required>
                                                                         <option v-for="option in options"
                                                                             v-bind:value="option.value">
                                                                             @{{ option.text }}
@@ -161,7 +160,8 @@
                                                                     </p>
                                                                     <!-- dropdownnya -->
                                                                     <select name="to" v-model="selected"
-                                                                        class="w-150" value="@{{ option.value }}">
+                                                                        class="w-150" value="@{{ option.value }}"
+                                                                        required>
                                                                         <option v-for="option in options"
                                                                             v-bind:value="option.value">
                                                                             @{{ option.text }}
@@ -173,7 +173,7 @@
                                                             </div>
                                                         </div>
                                                         <!-- passenger -->
-                                                        <div class="flex flex-col ml-10 w-1/2">
+                                                        <div class="flex flex-col ml-0 md:ml-10 w-full md:w-1/2">
                                                             <p>Passengers</p>
                                                             <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                                                                 <img src="../assets/icon/passenger.svg"
@@ -201,48 +201,31 @@
                                                                     value="{{ $order->departure }}" id="" />
                                                             </div>
                                                         </div>
-                                                        <!-- seat class -->
-                                                        <div class="flex flex-col mx-16">
-                                                            <p>Seat Class</p>
-                                                            <!-- cari cara dropdown semua bandaranya -->
-                                                            <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                                                                <img src="../assets/icon/seat.svg"
-                                                                    alt="" />
-                                                                <!-- dari sini -->
-                                                                <div id="seatModal" class="mx-4">
-                                                                    <!-- ini yg munculin valuenya -->
-                                                                    <p id="valueSeatModal">Recent
-                                                                        :{{ $order->seatclass }}</p>
-                                                                    <!-- dropdownnya -->
-                                                                    <select name="seatclass" v-model="selected"
-                                                                        class="w-150" value="@{{ option.value }}">
-
-                                                                        <option v-for="option in options"
-                                                                            v-bind:value="option.value">
-                                                                            @{{ option.text }}
-                                                                        </option>
-                                                                    </select>
-                                                                    <!-- dropdownnya -->
-                                                                </div>
-                                                                <!-- sampe sini -->
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!-- button -->
                                                 <div class="flex flex-row-reverse">
                                                     <button id="bookNow" type="submit"
-                                                        class="biru-button text-white p-2 rounded-md font-semibold w-1/6 hover:bg-blue-700 hover:shadow-lg ml-3">
+                                                        class="biru-button text-white p-2 rounded-md font-semibold w-1/3 md:w-1/6 hover:bg-blue-700 hover:shadow-lg ml-3">
                                                         Save Changes
                                                     </button>
+                                                    <a href="{{ route('addPassenger', $order->id) }}"
+                                                        class="biru-button text-white p-2 rounded-md font-semibold w-1/3 md:w-1/6 hover:bg-blue-700 hover:shadow-lg ml-3">
+                                                        Add Passengers
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="table-cell px-6 py-6 border-b-2 cursor-pointer" onclick="deleteBtn()">
-                                    <img class="hover:shadow-lg" src="../assets/icon/ion_trash-bin.svg"
+                                    <div class="hidden md:block">
+                                        <img class="hover:shadow-lg" src="../assets/icon/ion_trash-bin.svg"
                                         alt="" />
+                                    </div>
+                                    <div class="block md:hidden">
+                                        <div class="bg-red-600 text-white px-4 py-2">Delete</div>
+                                    </div>
                                     <!-- deleteModal -->
                                     <form action="{{ route('delete', $order->id) }}" method="POST">
                                         @csrf @method('DELETE')
@@ -284,19 +267,26 @@
         </div>
         <!-- dua -->
         <div>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('about') }}">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('howitworks') }}">How it
+                    Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('aircraft') }}">Aircraft</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('wtf') }}">Where We Fly</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('contact') }}">Contact</a></p>
         </div>
         <!-- tiga -->
         <!-- empat -->
         <div>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Participant Agreement</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Cookie Policy</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Terms and Condition</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Privacy Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('agreement') }}">Participant
+                    Agreement</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Cookie Policy</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Terms and
+                    Condition</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('privacy') }}">Privacy
+                    Policy</a></p>
         </div>
         <!-- lima -->
         <div>

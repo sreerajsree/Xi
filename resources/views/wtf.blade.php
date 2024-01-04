@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <title>Profile</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Check Order</title>
 </head>
 
 <body class="bg-white flex flex-col">
     <!-- nav white signed in -->
-    <nav id="regisWhite" class="flex py-8 container justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="regisWhite" class="flex py-8 container  justify-between sticky top-0 text-gray-700 bg-white">
         <a href="{{ route('home') }}">
-          <img class="w-11persen" src="../assets/logo-black.png" alt="" />
+            <img class="w-30 h-10" src="../assets/logo-black.png" alt="" />
         </a>
         <div class="flex flex-col">
             <div class="flex space-x-6">
@@ -57,54 +58,7 @@
         </div>
     </nav>
     <div id="container" class="container my-8">
-        <h1 class="text-4xl font-semibold text-gray-700 border-b-2 border-gray-100 py-4">
-            Profile
-        </h1>
-        <div class="py-10 px-8 flex flex-col md:flex-row">
-            <div id="kiri" class="flex  mr-36">
-                <div>
-                    <img class="mr-32 custom-profile object-cover" src="{{ asset('storage/pp/' . Auth::user()->image) }}"
-                        alt="" />
-                </div>
-                <div id="changePP">
-                    <h1 class="font-semibold">{{ Auth::user()->fullname }}</h1>
-                    <div class="text-blue-icon pt-2">
-                        <div class="flex flex-col font-semibold">
-                            <p class="text-left">Change Profile Picture</p>
-                           <form action="{{ route('imageUpdate', Auth::user()->id) }}"  method="POST" enctype="multipart/form-data">
-                            @method('POST')
-                            @csrf
-                            <input type="file" name="image" />
-                            <button type="submit">Update</button>
-                           </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="kanan">
-                <form action="{{ route('profileUpdate', Auth::user()->id) }}" method="POST" class="text-gray-500">
-                    @csrf
-                    @method('PATCH')
-                    <p>Full Name</p>
-                    <input type="text" name="fullname" id="fullname" placeholder="Full Name"
-                        class="border-2 border-gray-300 p-2 rounded-md w-96 mb-4"
-                        value="{{ Auth::user()->fullname }}" />
-                    <p>Email</p>
-                    <input type="email" name="email" id="email" placeholder="Email"
-                        class="border-2 border-gray-300 p-2 rounded-md w-96 mb-4" value="{{ Auth::user()->email }}" />
-                    <p>Date of Birth</p>
-                    <input type="date" name="dob" id="dob" placeholder="XX/XX/XXXX" 
-                        class="border-2 border-gray-300 p-2 rounded-md w-96 mb-4" value="{{ Auth::user()->dob }}" />
-                    <p>Address</p>
-                    <textarea name="address" id="address" cols="30" rows="2" placeholder="Address" required
-                        class="border-2 border-gray-300 p-2 rounded-md w-96 mb-4">{{ Auth::user()->address }}</textarea>
-                    <button id="btnModal" type="submit"
-                        class="block biru-button text-white font-semibold p-4 px-10 rounded-md hover:shadow-lg">
-                        Save Changes
-                    </button>
-                </form>
-            </div>
-        </div>
+        <h1 class="text-4xl font-semibold text-gray-700 py-4">Under Development</h1>
     </div>
     <footer class="grid grid-cols-1 md:grid-cols-4 gap-4 border-t-2 container py-8">
         <!-- satu -->
@@ -148,13 +102,36 @@
             </div>
         </div>
     </footer>
-  <!-- copyrgith -->
-  <div class="border-t-2 container py-8">
-      <h1 class="text-center text-gray-500">
-          ©{{ date('Y') }} Xi Aviation, Inc. All Rights Reserved.
-      </h1>
-  </div>
-  <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    <!-- copyrgith -->
+    <div class="border-t-2 container py-8">
+        <h1 class="text-center text-gray-500">
+            ©{{ date('Y') }} Xi Aviation, Inc. All Rights Reserved.
+        </h1>
+    </div>
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/tiketScript.js') }}"></script>
+    <script>
+        // ilang dimana aja
+        let editnya = document.getElementById("editModal");
+        let deletenya = document.getElementById("deleteModal");
+        // editBtn show
+        function editBtn() {
+            editnya.style.display = "block";
+        }
+        // deleteBtn show
+        function deleteBtn() {
+            deletenya.style.display = "block";
+        }
+        // pas pencet window ngeclose
+        window.onclick = function(event) {
+            if (event.target == editnya) {
+                editnya.style.display = "none";
+            }
+            if (event.target == deletenya) {
+                deletenya.style.display = "none";
+            }
+        };
+    </script>
 </body>
 
 </html>

@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Terms & Conditions | Xi Aviation</title>
 </head>
 
 <body class="bg-white flex flex-col">
     <!-- nav white signed in -->
     @auth
-        <nav id="regisWhite" class="flex py-8 px-24 justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="regisWhite" class="flex py-8 container justify-between sticky top-0 text-gray-700 bg-white">
             <a href="{{ route('home') }}">
                 <img class="w-30 h-10" src="../assets/logo-black.png" alt="" />
             </a>
@@ -188,7 +188,8 @@
                     Works</a></p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('aircraft') }}">Aircraft</a>
             </p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('wtf') }}">Where We Fly</a>
+            </p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('contact') }}">Contact</a></p>
         </div>
         <!-- tiga -->
@@ -196,11 +197,12 @@
         <div>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('agreement') }}">Participant
                     Agreement</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('cookie-policy') }}">Cookie Policy</a>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Cookie Policy</a>
             </p>
             <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Terms and
                     Condition</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('privacy') }}">Privacy Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('privacy') }}">Privacy
+                    Policy</a></p>
         </div>
         <!-- lima -->
         <div>

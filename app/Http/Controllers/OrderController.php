@@ -28,7 +28,7 @@ class OrderController extends Controller
             'seatclass' => 'required',
         ]);
         Order::create([
-            'user_id' => \Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'from' => $request->from,
             'to' => $request->to,
             'adult' => $request->adult,

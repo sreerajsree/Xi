@@ -11,7 +11,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Xi Aviation</title>
 </head>
 
@@ -19,7 +19,7 @@
     <div class="header bg-pesawat text-white">
         <!-- start nav -->
         <!-- nav blue signed in -->
-        <nav id="regisBlue" class="flex py-8 container md:px-24 justify-between sticky top-0">
+        <nav id="regisBlue" class="flex py-8 px-4 md:px-24 justify-between sticky top-0">
             <a href="{{ route('home') }}">
                 <img class="w-11persen" src="../assets/logo.png" alt="" />
             </a>
@@ -65,7 +65,7 @@
         </nav>
         <!-- stop nav -->
         <div class="flex flex-col text-center my-6">
-            <h1 class="text-4xl font-semibold tracking-widest">
+            <h1 class="text-4xl font-semibold tracking-wider">
                 Book your flight right from seat
             </h1>
             <!-- carousel -->
@@ -84,7 +84,7 @@
         </div>
     </div>
     <!-- nav white signed in -->
-    <nav id="regisWhite" class="flex py-8 container md:px-24 justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="regisWhite" class="flex py-8 container justify-between sticky top-0 text-gray-700 bg-white">
         <img class="w-30 h-10" src="../assets/logo-black.png" alt="" />
         <div class="flex flex-col">
             <div class="flex space-x-6">
@@ -137,7 +137,7 @@
             <!-- menu milih mesen -->
             <div class="flex flex-col my-4">
                 <!-- atas -->
-                <div class="flex flex-row">
+                <div class="block md:flex flex-row">
                     <!-- from -->
                     <div class="flex flex-col">
                         <p>From</p>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <!-- passenger -->
-                    <div class="flex flex-col ml-10 w-1/2">
+                    <div class="flex flex-col ml-0 md:ml-10 w-full md:w-1/2">
                         <p>Passengers</p>
                         <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                             <img src="../assets/icon/passenger.svg" alt="" />
@@ -203,27 +203,6 @@
                             <input class="pl-2" type="date" name="date" id="" />
                         </div>
                     </div>
-                    <!-- seat class -->
-                    <div class="flex flex-col mx-40">
-                        <p>Seat Class</p>
-                        <!-- cari cara dropdown semua bandaranya -->
-                        <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                            <img src="../assets/icon/seat.svg" alt="" />
-                            <!-- dari sini -->
-                            <div id="seatWhite" class="mx-4">
-                                <!-- ini yg munculin valuenya -->
-                                <p id="valueSeatWhite">@{{ selected }}</p>
-                                <!-- dropdownnya -->
-                                <select v-model="selected" class="w-150">
-                                    <option v-for="option in options" v-bind:value="option.value">
-                                        @{{ option.text }}
-                                    </option>
-                                </select>
-                                <!-- dropdownnya -->
-                            </div>
-                            <!-- sampe sini -->
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- button -->
@@ -239,14 +218,14 @@
     <form action="{{ route('store') }}" method="POST">
         @csrf
         <div id="modalnya" class="modal">
-            <div class="border-2 shadow-lg bg-white mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
+            <div class="border-2 shadow-lg bg-white mx-4 md:mx-56 text-gray-400 rounded-lg p-12 flex flex-col rounded-2xl">
                 <h1 class="text-black text-3xl font-semibold">
                     Where would you like to go?
                 </h1>
                 <!-- menu milih mesen -->
                 <div class="flex flex-col my-4">
                     <!-- atas -->
-                    <div class="flex flex-row">
+                    <div class="block md:flex flex-row">
                         <!-- from -->
                         <div class="flex flex-col">
                             <p>From</p>
@@ -291,7 +270,7 @@
                             </div>
                         </div>
                         <!-- passenger -->
-                        <div class="flex flex-col ml-10 w-1/2">
+                        <div class="flex flex-col ml-0 md:ml-10 w-full md:w-1/2">
                             <p>Passengers</p>
                             <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                                 <img src="../assets/icon/passenger.svg" alt="" />
@@ -312,28 +291,6 @@
                             <div class="flex flex-row border-b-2 border-gray-100 mt-4">
                                 <img src="../assets/icon/calendar.svg" alt="" />
                                 <input class="pl-2" type="date" name="departure" id="" />
-                            </div>
-                        </div>
-                        <!-- seat class -->
-                        <div class="flex flex-col mx-40">
-                            <p>Seat Class</p>
-                            <!-- cari cara dropdown semua bandaranya -->
-                            <div class="flex flex-row border-b-2 border-gray-100 mt-2">
-                                <img src="../assets/icon/seat.svg" alt="" />
-                                <!-- dari sini -->
-                                <div id="seatModal" class="mx-4">
-                                    <!-- ini yg munculin valuenya -->
-                                    <p id="valueSeatModal">@{{ selected }}</p>
-                                    <!-- dropdownnya -->
-                                    <select name="seatclass" v-model="selected" class="w-150"
-                                        value="@{{ option.value }}">
-                                        <option v-for="option in options" v-bind:value="option.value">
-                                            @{{ option.text }}
-                                        </option>
-                                    </select>
-                                    <!-- dropdownnya -->
-                                </div>
-                                <!-- sampe sini -->
                             </div>
                         </div>
                     </div>
@@ -431,14 +388,14 @@
     </div>
     <div id="container" class="container">
         <!-- yang going anywhere -->
-        <div class="flex items-center mt-20">
-            <img class="w-56 mx-auto md:w-auto" src="../assets/airplane-about.png" alt="" />
-            <div class="ml-0 md:ml-20">
-                <div class="text-gray-800 font-semibold tracking-wider">
+        <div class="flex flex-col md:flex-row items-center mt-20">
+            <img class="w-full mx-auto md:w-1/2" src="https://images.unsplash.com/photo-1566212775038-532d06eda485?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+            <div class="ml-0 md:ml-20 mt-5 md:mt-0">
+                <div class="text-gray-800 font-semibold tracking-wider text-center md:text-left">
                     <h2 class="text-2xl">Going anywhere?</h2>
                     <h1 class="text-3xl">Xi Aviation is the answer!</h1>
                 </div>
-                <p class="mt-4 text-gray-500 text-lg">
+                <p class="mt-4 text-gray-500 text-lg text-center md:text-left">
                     Xi Aviation provides an enjoyable experience of booking flights. With
                     a single-click from your couch, you are ready to fly to your
                     destination! We provide various flights from various trusted flights
@@ -447,12 +404,12 @@
             </div>
         </div>
         <!-- yang ada 3 itu -->
-        <div class="flex flex-col text-center font-semibold text-gray-800 mt-40">
+        <div class="flex flex-col text-center font-semibold text-gray-800 mt-20 md:mt-40">
             <h1 class="text-3xl tracking-wider mb-16">
                 Why Booking Flights at Xi Aviation?
             </h1>
             <!-- 3 iconnya -->
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <!-- hp -->
                 <div>
                     <img class="mx-auto" src="../assets/icon/book-flights.svg" alt="" />
@@ -511,19 +468,22 @@
         </div>
         <!-- dua -->
         <div>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('about') }}">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('howitworks') }}">How it
+                    Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('aircraft') }}">Aircraft</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('wtf') }}">Where We Fly</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('contact') }}">Contact</a></p>
         </div>
         <!-- tiga -->
         <!-- empat -->
         <div>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Participant Agreement</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Cookie Policy</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Terms and Condition</a></p>
-            <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Privacy Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('agreement') }}">Participant
+                    Agreement</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Cookie Policy</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Terms and Condition</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('privacy') }}">Privacy Policy</a></p>
         </div>
         <!-- lima -->
         <div>

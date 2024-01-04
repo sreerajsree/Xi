@@ -82,7 +82,7 @@ function popUpWhite() {
 }
 
 $(window).scroll(function () {
-  if ($(window).scrollTop() > 500) {
+  if ($(window).scrollTop() > 1000) {
       $('#noRegisBlue').css('display', 'none');
   } else {
       $('#noRegisBlue').css('display', 'flex');
@@ -90,7 +90,7 @@ $(window).scroll(function () {
 });
 
 $(window).scroll(function () {
-  if ($(window).scrollTop() > 500) {
+  if ($(window).scrollTop() > 1000) {
       $('#noregisWhite').css('display', 'flex');
   } else {
       $('#noregisWhite').css('display', 'none');
@@ -98,7 +98,7 @@ $(window).scroll(function () {
 });
 
 $(window).scroll(function () {
-  if ($(window).scrollTop() > 500) {
+  if ($(window).scrollTop() > 1000) {
       $('#regisBlue').css('display', 'none');
   } else {
       $('#regisBlue').css('display', 'flex');

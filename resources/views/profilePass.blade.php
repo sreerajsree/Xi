@@ -12,7 +12,7 @@
 
 <body class="bg-white flex flex-col">
     <!-- nav white signed in -->
-    <nav id="regisWhite" class="flex py-8 px-24 justify-between sticky top-0 text-gray-700 bg-white">
+    <nav id="regisWhite" class="flex py-8 container  justify-between sticky top-0 text-gray-700 bg-white">
         <a href="{{ route('home') }}"><img class="w-30 h-10" src="../assets/logo-black.png" alt="" /></a>
         <div class="flex flex-col">
             <div class="flex space-x-6">
@@ -110,40 +110,47 @@
         </div>
     </div>
     <footer class="grid grid-cols-1 md:grid-cols-4 gap-4 border-t-2 container py-8">
-      <!-- satu -->
-      <div>
-          <img style="width: 150px" src="../assets/logo-black.png" alt="" />
-      </div>
-      <!-- dua -->
-      <div>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">About</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">How it Works</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Aircraft</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Where We Fly</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Contact</a></p>
-      </div>
-      <!-- tiga -->
-      <!-- empat -->
-      <div>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Participant Agreement</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Cookie Policy</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Terms and Condition</a></p>
-          <p class="py-2 text-base text-gray-500 hover:underline"><a href="">Privacy Policy</a></p>
-      </div>
-      <!-- lima -->
-      <div>
-          <h1 class="text-gray-800 font-semibold text-lg">Follow Us</h1>
-          <div class="flex py-2">
-              <a href="https://www.facebook.com/"><img class="pr-2" src="../assets/facebook.svg"
-                      alt="" /></a>
-              <a href="https://twitter.com/"><img class="px-2" src="../assets/twitter.svg" alt="" /></a>
-              <a href="https://instagram.com/"><img class="px-2" src="../assets/instagram.svg"
-                      alt="" /></a>
-              <a href="https://linkedin.com/"><img class="px-2" src="../assets/linkedin.svg"
-                      alt="" /></a>
-          </div>
-      </div>
-  </footer>
+        <!-- satu -->
+        <div>
+            <img style="width: 150px" src="../assets/logo-black.png" alt="" />
+        </div>
+        <!-- dua -->
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('about') }}">About</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('howitworks') }}">How it
+                    Works</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('aircraft') }}">Aircraft</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('wtf') }}">Where We Fly</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('contact') }}">Contact</a></p>
+        </div>
+        <!-- tiga -->
+        <!-- empat -->
+        <div>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('agreement') }}">Participant
+                    Agreement</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Cookie Policy</a>
+            </p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('terms') }}">Terms and
+                    Condition</a></p>
+            <p class="py-2 text-base text-gray-500 hover:underline"><a href="{{ route('privacy') }}">Privacy
+                    Policy</a></p>
+        </div>
+        <!-- lima -->
+        <div>
+            <h1 class="text-gray-800 font-semibold text-lg">Follow Us</h1>
+            <div class="flex py-2">
+                <a href="https://www.facebook.com/"><img class="pr-2" src="../assets/facebook.svg"
+                        alt="" /></a>
+                <a href="https://twitter.com/"><img class="px-2" src="../assets/twitter.svg" alt="" /></a>
+                <a href="https://instagram.com/"><img class="px-2" src="../assets/instagram.svg"
+                        alt="" /></a>
+                <a href="https://linkedin.com/"><img class="px-2" src="../assets/linkedin.svg"
+                        alt="" /></a>
+            </div>
+        </div>
+    </footer>
   <!-- copyrgith -->
   <div class="border-t-2 container py-8">
       <h1 class="text-center text-gray-500">
